@@ -1,13 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-
+//스토어와 컴포넌트 연결
+import { Provider } from 'react-redux';
+import store from './redux/configstore';
+// 라우터
+import { BrowserRouter } from 'react-router-dom'
 import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <BrowserRouter>
+    <Provider store={store}>
     <App />
-  </React.StrictMode>
+    </Provider>
+    </BrowserRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function
