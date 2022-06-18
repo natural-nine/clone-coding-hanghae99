@@ -38,7 +38,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
-  background-color: #6F1E51;
+  
 }
 ol, ul {
 	list-style: none;
@@ -59,12 +59,16 @@ table {
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+
   <BrowserRouter>
   <Provider store={store}>
     <GlobalStyle/>
     <App />
     </Provider>
     </BrowserRouter>
+
+ 
+
 );
 
 // If you want to start measuring performance in your app, pass a function
