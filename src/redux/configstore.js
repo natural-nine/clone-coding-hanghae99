@@ -26,7 +26,7 @@ import post from "../redux/modules/post";
 
 
 const middlewares = [thunk]
-const rootReducer = combineReducers({});
+const rootReducer = combineReducers({user, post});
 const enhancer = applyMiddleware(...middlewares)
 
 
