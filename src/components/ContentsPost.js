@@ -3,9 +3,10 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import user from "../images/init-user.png"
+import { createContentsDB } from "../redux/modules/post";
 
 const Wrap = styled.div`
-
+    
 `
 const H1 = styled.h1`
     display: flex;
@@ -16,7 +17,6 @@ const UserBox = styled.div`
     display: flex;
     align-items: center;
     
-
 `
 const Img = styled.img`
     width: 30px;
@@ -69,15 +69,25 @@ const ContentsPost = (props) => {
     
     const textRef = useRef(null);
     const conImg = useRef(null);
-    // const [] = useState();
+    
     const [defaultImg, setDefaultImg] = useState(false);
     const [isImg, setIsImg] = useState("");
     const dispatch = useDispatch();
+
     const onSubmit = (e) => {
         e.preventDefault();
-        console.log(textRef.current.value)
-        props.close(false)   
+        console.log(textRef.current.value);
+        const textValue = textRef.current.value
+        props.close(false);
+        console.log(isImg, textValue);
+
+        let data = {
+            contents:textValue,
+            image:isImg
+        };
+        dispatch(createContentsDB(data));   
     };
+
     const onImgChange = async (e) => {
         const reader = new FileReader();
         const file = conImg.current.files[0];
@@ -104,7 +114,6 @@ const ContentsPost = (props) => {
             <ContentsForm onSubmit={onSubmit}>
                 <TextInput ref={textRef}/>
                 <Input onChange={onImgChange} ref={conImg} type={"file"} accept="image/*"/>
-                {/* <conImg/> */}
                 {defaultImg ? (<ConImg src={isImg}/>):
                 (<SelectImgBox onClick={imgClick}>
                     <Span2>이미지를 선택해 주세요.</Span2>

@@ -9,6 +9,7 @@ const MainBox = styled.div`
     height: 75px;
     border: 1px solid black;
     margin: auto;
+    margin-top: 50px;
 `
 const TopBox = styled.div`
     display: flex;
