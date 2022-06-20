@@ -1,8 +1,11 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux'
+// import { createStore, combineReducers, applyMiddleware } from 'redux'
+//툴킷 사용시 import
+import { configureStore } from '@reduxjs/toolkit';
+
 // import { getStorage } from "firebase/storage";
 // import { initializeApp } from "firebase/app";
 
-import thunk from 'redux-thunk'
+// import thunk from 'redux-thunk'
 
 import user from "../redux/modules/user";
 import post from "../redux/modules/post";
@@ -24,13 +27,17 @@ import post from "../redux/modules/post";
 
 // const app = initializeApp(firebaseConfig);
 
+//툴킷에는 thunk 포함되어있으므로 필요없음
+// const middlewares = [thunk]
+// const rootReducer = combineReducers({user, post});
+// const enhancer = applyMiddleware(...middlewares)
 
-const middlewares = [thunk]
-const rootReducer = combineReducers({user, post});
-const enhancer = applyMiddleware(...middlewares)
 
-
-const store = createStore(rootReducer, enhancer);
+const store = configureStore({
+  reducer:{
+  user,
+  post
+  }});
 
 // export const storage = getStorage(app)
 

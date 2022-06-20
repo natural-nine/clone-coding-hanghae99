@@ -11,10 +11,10 @@ import sticker from "../images/sticker.png";
 const CommentInput = () => {
   return(
      <>
-     <div>
-     <Container placeholder="댓글을 입력하세요..." ></Container>
+     <Box>
+     <Input placeholder="댓글을 입력하세요..." ></Input>
      <p>글을 게시하려면 Enter 키를 누르세요</p>
-     </div>
+     </Box>
      
      <Button>
       <button><img src={emoji} alt=''/></button>
@@ -26,7 +26,11 @@ const CommentInput = () => {
   );
 };
 
-const Container = styled.input`
+const Box = styled.div`
+
+`
+
+const Input = styled.input`
 width: 500px;
 height: 35px;
 border-radius: 20px;
@@ -36,9 +40,6 @@ background-color: #F0F2F5;
 border: none;
 :focus{
   outline: none;
-}
-div{
-  font-size: 12px;
 }
 `
 
