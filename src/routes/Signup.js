@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+//로고 이미지
 import logo from "../images/logo-signup.png";
 //모달 컴포넌트
 import Modal from "../components/Modal";
@@ -41,6 +42,7 @@ function Signup() {
             새 계정 만들기
           </ModalButton>
         </Container>
+    
       </Box>
       <Footer>
         <p>

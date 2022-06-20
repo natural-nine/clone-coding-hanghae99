@@ -11,7 +11,7 @@ function Modal() {
   //array로 빈배열 118개를 만들고, key값을 가져와서 117개의 숫자를 배열화 한다.
   const ymd = {
     //1905년부터 2022년 까지 나올수 있게 key값에 1905를 더함
-    //최신연도가 위로 올라가게 reverse 사용d
+    //최신연도가 위로 올라가게 reverse 사용
     year: [...Array(118).keys()].map((key) => key + 1905).reverse(),
     //나머지 month랑 day도 같은 방식으로 배열화 해준다
     month: [...Array(12).keys()].map((key) => key + 1),
@@ -163,7 +163,7 @@ const Body = styled.div`
 const Name = styled.div`
   width: 100%;
   height: 50px;
-
+  
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -179,7 +179,9 @@ const Name = styled.div`
 const Bir = styled.div`
   font-size: 12px;
   margin: 9px;
-
+  div{
+    margin-left: 6px;
+  }
   select {
     border: 1px solid #CCD0D5;
     :focus{
@@ -197,6 +199,7 @@ margin-left: 10px;
 div{
   font-size: 12px;
   margin-bottom: 8px;
+  margin-left: 6px;
 }
 label{
   margin: 0px 13px 0px 5px;
