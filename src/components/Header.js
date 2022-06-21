@@ -18,7 +18,9 @@ const Wrap = styled.div`
     display: flex;
     justify-content: space-between;
     background-color: #ffffff;
-    margin-top: 7px;
+    margin-top:7px;
+    padding-bottom:5px;
+    box-shadow: 0 1px 2px -1px #7f8fa6;
 `
 
 const SlideBar = styled.div`
@@ -60,8 +62,9 @@ const Span = styled.span`
 
 const HeaderMidBox = styled.div`
  .icon{
+    margin-top: 5px;
     margin-right: 75px;
-    font-size: 25px;
+    font-size: 23px;
  }
 `
 
@@ -98,11 +101,14 @@ const Circle = styled.div`
     justify-content: center;
 `
 const Plus = styled(FaPlus)`
+    font-size: 11px;
 
 `
 const Messenger = styled(FaFacebookMessenger)`
+    font-size: 11px;
 `
 const Bell = styled(FaBell)`
+    font-size: 11px;
 `
 
 const Down = styled(FaSortDown)`

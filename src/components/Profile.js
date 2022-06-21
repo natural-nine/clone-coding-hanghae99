@@ -5,11 +5,11 @@ import user from "../images/init-user.png"
 const Wrap = styled.div`
     width: 250px;
     height: 300px;
-    border: 1px solid black;
     position: absolute;
     z-index: 2;
     right: 5px;
     border-radius: 10px;
+    background-color: #fff;
 `
 
 const ProfileBox = styled.div`

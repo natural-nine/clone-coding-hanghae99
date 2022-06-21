@@ -11,7 +11,7 @@ import {FaPlus} from "react-icons/fa"
 const Wrap = styled.div`
     display: flex;
     justify-content: space-between;
-    background-color: #ffffff;
+    
     margin-top: 7px;
     width: 500px;
     height:170px;
@@ -44,9 +44,9 @@ const Circle = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid #fff;
+    border: 2.5px solid #fff;
     margin-top: -25px;
-    margin-left: 35px;
+    margin-left: 32px;
 `
 const Plus = styled(FaPlus)`
     color: #087cea;
