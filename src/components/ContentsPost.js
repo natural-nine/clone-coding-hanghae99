@@ -1,9 +1,11 @@
 import React, { useReducer, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import user from "../images/init-user.png"
 import { createContentsDB } from "../redux/modules/post";
+import {isUpdate} from "../recoil";
 
 const Wrap = styled.div`
     
@@ -78,7 +80,7 @@ const ContentsPost = (props) => {
     const [defaultImg, setDefaultImg] = useState(false);
     const [isImg, setIsImg] = useState("");
     const dispatch = useDispatch();
-
+    const [isupdate, isSetUpdate] = useRecoilState(isUpdate)
     const onSubmit = (e) => {
         e.preventDefault();
         console.log(textRef.current.value);
@@ -95,10 +97,10 @@ const ContentsPost = (props) => {
         };
         dispatch(createContentsDB(data));  
         }
-         props.update.update();
-         navigate("/main")
+        isSetUpdate((prev)=>!prev)
          
-
+         navigate("/main")
+         alert("게시글 등록 완료.")
     };
 
     const onImgChange = async (e) => {
@@ -116,7 +118,7 @@ const ContentsPost = (props) => {
     const imgClick = () => {
         conImg.current.click();
     };
-    console.log(props.close,props.update.update, "this is post props")
+    // console.log(props.close,props.update.update, "this is post props")
     return(
         <Wrap>
             <H1>게시물 만들기</H1>

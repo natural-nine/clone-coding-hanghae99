@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import store from './redux/configstore';
 // 라우터
 import { BrowserRouter } from 'react-router-dom'
-
+import { RecoilRoot } from 'recoil';
 
 
 import App from './App';
@@ -14,7 +14,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   	<BrowserRouter>
   		<Provider store={store}>
-   			<App />
+			<RecoilRoot>
+   				<App />
+			</RecoilRoot>
     	</Provider>
 	</BrowserRouter>
 );

@@ -76,7 +76,7 @@ const PottoIcon = styled(FcMms)``
 
 const StatusIcon = styled(FcLike)``
 
-const ContentsBox = (props) => {
+const ContentsBox = () => {
     const [modalOpen, setModalOpen] = useState(false);
     const openModal = () => {
         setModalOpen(true);
@@ -84,7 +84,7 @@ const ContentsBox = (props) => {
     const closeModal = () => {
         setModalOpen(false);
     }
-    console.log(props, "this is data props")
+    
     return(
         <MainBox>
             <TopBox>
@@ -92,7 +92,7 @@ const ContentsBox = (props) => {
             <WriteBox >
                 <Span onClick={openModal}>?? 님, 무슨 생각을 하고 계신가요?</Span>
                 <ContentsModal open={modalOpen} close={closeModal} header="">
-                    <ContentsPost update={props}  close={setModalOpen}/>
+                    <ContentsPost  close={setModalOpen}/>
                 </ContentsModal>
                 </WriteBox>
             </TopBox>

@@ -7,8 +7,10 @@ import LeftSide from "../components/LeftSide";
 import RightSide from "../components/RightSide";
 import ContentsListBox from "../components/ContentsListBox";
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { loadContentsDB } from "../redux/modules/post";
+import { useRecoilValue } from "recoil";
+import {isUpdate} from "../recoil"
 
 // main route, 나머지 component에 추가 예정
 const Wrap = styled.div`
@@ -21,60 +23,48 @@ const MainBox = styled.div`
 `
 
 const Main = () => {
-    // const [modalOpen, setModalOpen] = useState(false);
-    const [isData, setIsData] = useState(false);
-    const [infoArray, setInfoArray] = useState([]);
-
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
     const observerRef = React.useRef();
     const boxRef = React.useRef(null);
-    const [any, forceUpdate] = useReducer(num => num + 1, 0)
-    
-    
+    //무한 스크롤 관련
+    // const [isData, setIsData] = useState(false);
+    // const [infoArray, setInfoArray] = useState([]);
+    // const isUpadate = useRecoilValue(isUpdate)
     // useEffect(() => {
-    //     // dispatch(loadContentsDB)(setInfoArray);
-    //     dispatch(loadContentsDB());
-    // })
-
-    // useEffect(() => {
-    //     // dispatch(loadContentsDB)(setInfoArray);
-    //     dispatch(loadContentsDB());
+    //         getInfo();
     // }, [])
-    useEffect(() => {
-        if(isData == true){
-            getInfo();
-        }else{
-            getInfo();
-        }
-        
-    }, [])
+    // useEffect(() => {
+    //     observerRef.current = new IntersectionObserver(intersectionObserver); // IntersectionObserver
+    //     boxRef.current && observerRef.current.observe(boxRef.current);
+    // }, [infoArray])
 
+    // const getInfo = async () => {
+    //     const res = await axios.get('http://localhost:5001/postContents'); // 서버에서 데이터 가져오기
+    //     setInfoArray((curInfoArray) => [...curInfoArray, ...res.data]); // state에 추가
+    //     console.log('info data add...');
+    // }
 
-    useEffect(() => {
-        observerRef.current = new IntersectionObserver(intersectionObserver); // IntersectionObserver
-        boxRef.current && observerRef.current.observe(boxRef.current);
-        
-    }, [infoArray])
-
+    // const intersectionObserver = (entries, io) => {
+    //     entries.forEach((entry) => {
+    //         if(entry.isIntersecting) { // 관찰하고 있는 entry가 화면에 보여지는 경우
+    //             io.unobserve(entry.target); // entry 관찰 해제
+    //             // dispatch(loadContentsDB)(setInfoArray); // 데이터 가져오기
+    //             getInfo();
+    //         }
+    //     })
+    // }
+    //// 무한 스크롤 관련
     
-    const getInfo = async () => {
-        const res = await axios.get('http://localhost:5001/postContents'); // 서버에서 데이터 가져오기
-        setInfoArray((curInfoArray) => [...curInfoArray, ...res.data]); // state에 추가
-        console.log('info data add...');
-    }
+    const list = useSelector((state) => state.post.list);
 
-    const intersectionObserver = (entries, io) => {
-        entries.forEach((entry) => {
-            if(entry.isIntersecting) { // 관찰하고 있는 entry가 화면에 보여지는 경우
-                io.unobserve(entry.target); // entry 관찰 해제
-                // dispatch(loadContentsDB)(setInfoArray); // 데이터 가져오기
-                getInfo();
-            }
-        })
-    }
-    console.log(infoArray)
-    console.log(isData)
+    useEffect(() => {
+        dispatch(loadContentsDB());
+        
+    },[])
+   
+    console.log(list , "this is list")
+   
     return(
         
         <Wrap>
@@ -85,7 +75,7 @@ const Main = () => {
             <RightSide/>
             <MainBox>
         <StoriesBox/>
-        <ContentsBox update={forceUpdate}/>
+        <ContentsBox />
         <ContentsListBox/>
         </MainBox>
         </Wrap>

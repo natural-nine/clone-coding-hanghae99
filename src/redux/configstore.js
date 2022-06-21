@@ -9,6 +9,7 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import user from "../redux/modules/user";
 import post from "../redux/modules/post";
+import profile from "../redux/modules/profile";
 
 //만든 모듈 import하고 combineReducers({ }); 안에 넣어주기
 
@@ -36,7 +37,8 @@ import post from "../redux/modules/post";
 const store = configureStore({
   reducer:{
   user,
-  post
+  post,
+  profile
   }});
 
 // export const storage = getStorage(app)
