@@ -34,6 +34,9 @@ const ContentsForm = styled.form`
     margin-top: 10px;
 `
 const TextInput = styled.input`
+    padding:30px;
+    border: none;
+    height: 30px;
 `
 const ConImg = styled.img`
     width: auto;
@@ -54,14 +57,16 @@ const Span2 = styled.span`
 
 const Input = styled.input`
     display: none;
+    outline: none;
 `
 
 const Btn = styled.button`
-    height: 30px;
+    height: 40px;
     border-radius: 20px;
     background-color: #087cea;
     color:#fff;
     margin-top: 20px;
+    
 `
 
 
@@ -78,14 +83,19 @@ const ContentsPost = (props) => {
         e.preventDefault();
         console.log(textRef.current.value);
         const textValue = textRef.current.value
-        props.close(false);
+        if(textValue == ""){
+            alert("글을 작성하지 않았습니다.")
+        }else{
+            props.close(false);
         console.log(isImg, textValue);
 
         let data = {
             contents:textValue,
             image:isImg
         };
-        dispatch(createContentsDB(data));   
+        // dispatch(createContentsDB(data));  
+        }
+         
     };
 
     const onImgChange = async (e) => {
