@@ -3,10 +3,13 @@ import styled from "styled-components";
 //로고 이미지
 import logo from "../images/logo-signup.png";
 //모달 컴포넌트
-import Modal from "../components/Modal";
+import Modal from "../components/SignupModal";
 
-function Signup() {
+function Login() {
   let [modal, setModal] = useState(false);
+
+  const [email, setEmail] =useState('');
+  const [password, setPassword] = useState('');
 
   //
   return (
@@ -185,4 +188,4 @@ const Footer = styled.div`
   }
 `;
 
-export default Signup;
+export default Login;
