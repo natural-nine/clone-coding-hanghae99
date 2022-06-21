@@ -1,8 +1,12 @@
 import styled from "styled-components";
 import { useEffect, useRef, useState } from "react";
+import {useDispatch} from 'react-redux';
+
+import {add_user_AX} from'../redux/modules/user';
 
 //회원가입 모달창 띄우기
 function Modal() {
+  const dispatch = useDispatch();
   //회원정보 state
   const [user, setuser] = useState({
     familyName: "",
@@ -79,7 +83,8 @@ function Modal() {
   }, []);
 
   const signUp = () => {
-    console.log(user)
+    //dispatch해서 유저정보 보내기
+    dispatch(add_user_AX(user))
   };
 
   return (
