@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { loadContentsDB } from "../redux/modules/post";
 import { useRecoilValue } from "recoil";
 import {isUpdate} from "../recoil"
+import { useNavigate } from "react-router-dom";
 
 // main route, 나머지 component에 추가 예정
 const Wrap = styled.div`
@@ -24,9 +25,11 @@ const MainBox = styled.div`
 
 const Main = () => {
     const dispatch = useDispatch();
-
+    const navigate = useNavigate()
     const observerRef = React.useRef();
     const boxRef = React.useRef(null);
+
+    const [isLogin, setIsLogin] = useState(false)
     //무한 스크롤 관련
     // const [isData, setIsData] = useState(false);
     // const [infoArray, setInfoArray] = useState([]);
@@ -55,18 +58,27 @@ const Main = () => {
     //     })
     // }
     //// 무한 스크롤 관련
-    
+    const userToken = () => {localStorage.getItem("user_token");}; 
+    const token = localStorage.getItem("user_token"); 
     const list = useSelector((state) => state.post.list);
 
     useEffect(() => {
         dispatch(loadContentsDB());
-        
+        if(token == null){
+            setIsLogin(false)
+        }else{
+            setIsLogin(true);
+        }
     },[])
    
     console.log(list , "this is list")
-   
+    
+  
+//    console.log(token)
+    console.log(isLogin)
     return(
-        
+        <>
+        {isLogin ? (
         <Wrap>
             <div>
         <Header/>
@@ -78,8 +90,8 @@ const Main = () => {
         <ContentsBox />
         <ContentsListBox/>
         </MainBox>
-        </Wrap>
-        
+        </Wrap>) : (navigate("/"))}
+        </>
     );
 };
 
