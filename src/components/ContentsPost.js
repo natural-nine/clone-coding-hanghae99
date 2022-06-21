@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useReducer, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -74,7 +74,7 @@ const ContentsPost = (props) => {
     
     const textRef = useRef(null);
     const conImg = useRef(null);
-    
+    const navigate = useNavigate();
     const [defaultImg, setDefaultImg] = useState(false);
     const [isImg, setIsImg] = useState("");
     const dispatch = useDispatch();
@@ -93,9 +93,12 @@ const ContentsPost = (props) => {
             contents:textValue,
             image:isImg
         };
-        // dispatch(createContentsDB(data));  
+        dispatch(createContentsDB(data));  
         }
+         props.update.update();
+         navigate("/main")
          
+
     };
 
     const onImgChange = async (e) => {
@@ -113,6 +116,7 @@ const ContentsPost = (props) => {
     const imgClick = () => {
         conImg.current.click();
     };
+    console.log(props.close,props.update.update, "this is post props")
     return(
         <Wrap>
             <H1>게시물 만들기</H1>
