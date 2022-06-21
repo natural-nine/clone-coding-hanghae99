@@ -27,7 +27,7 @@ export const add_user_AX = (post_info) => {
 //로컬스토리지에 저장하는거
 export const LoginDB = (login_info) => {
   return function (dispatch) {
-    axios.post('http://54.180.114.134/login', login_info)
+    axios.post('http://54.180.114.134/user/login', login_info)
       .then((response) => {
         localStorage.setItem("user_token", response.data.token);
         window.alert("로그인 완료!")
@@ -62,8 +62,11 @@ const userSlice = createSlice({
     //회원가입
     createUser :(state,action) => {
       state.user_info.push(action.payload)
-    }
+    },
+    //로그인
+    setuser:(state, action)=>{
 
+    }
 
 
 

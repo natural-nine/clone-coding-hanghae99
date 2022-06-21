@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { useEffect, useRef, useState } from "react";
-import {useDispatch} from 'react-redux';
+import { useDispatch } from "react-redux";
 
-import {add_user_AX} from'../redux/modules/user';
+import { add_user_AX } from "../redux/modules/user";
 
 //회원가입 모달창 띄우기
 function Modal() {
@@ -16,7 +16,7 @@ function Modal() {
     year: "",
     month: "",
     day: "",
-    gender:''
+    gender: "",
   });
 
   // 유저 데이터 input 입력값 넣어두기
@@ -25,36 +25,6 @@ function Modal() {
   };
 
   // 유효성 검사
-  const check = (value) => {
-    let return_value = true;
-    switch (value) {
-      case "name":
-        const checkName = /\s/g;
-        if (checkName.test(user.familyName) || user.familyName === "")
-          return_value = false;
-        break;
-      case "lastname":
-        const checkLastName = /\s/g;
-        if (checkLastName.test(user.givenName) || user.givenName === "")
-          return_value = false;
-        break;
-      case "mail":
-        const checkEmail =
-          /^[0-9a-zA-Z]([-_]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
-        if (checkEmail.test(user.mail) || user.mail === "")
-          return_value = false;
-        break;
-      case "password":
-        const checkPassword = /((?=.*[0-9])(?=.*[a-zA-Z])).{4,16}$/;
-        if (checkPassword.test(user.password) || user.password === "")
-          return_value = false;
-        break;
-      default:
-        return_value = false;
-        break;
-    }
-    return return_value;
-  };
 
   //생일 선택박스 만들기
   const year_ref = useRef(null);
@@ -83,8 +53,20 @@ function Modal() {
   }, []);
 
   const signUp = () => {
+    // validation 체크
+    if(!/^[0-9a-zA-Z]([-_\\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i.test(user.mail)) {
+      alert("이메일만 입력해 주세요!");
+      return;
+    }
+
+    // 하기 코드는 테스트 및 분석해봐야 함
+    if(!/^[a-zA-Z0-9!@#$%^*+=-]{4,16}$/.test(user.password)){ // 안에 소문자,대문자,숫자, 특수문자 '!' ~ '+' (괄호 제외)를 제외한 값이 있을 경우
+      alert("비밀번호는 숫자와 영문자, 특수문자(!@#$%^&*+=-) 조합으로 사용할 수 있으며 4~16자리로 입력해야 합니다.");
+      return;
+    }
+
     //dispatch해서 유저정보 보내기
-    dispatch(add_user_AX(user))
+    dispatch(add_user_AX(user));
   };
 
   return (
@@ -105,27 +87,20 @@ function Modal() {
       <hr />
       <Body>
         <Name>
-          <input
-            placeholder="성(性)"
-            error={check("name")}
-            onChange={handleChange("familyName")}
-          />
+          <input placeholder="성(性)" onChange={handleChange("familyName")} />
           <input
             placeholder="이름(성은 제외)"
-            error={check("lastname")}
             onChange={handleChange("givenName")}
           />
         </Name>
         <input
           className="name"
           placeholder="휴대폰 번호 또는 이메일"
-          error={check("mail")}
           onChange={handleChange("mail")}
         />
         <input
           className="name"
           placeholder="새 비밀번호"
-          error={check("password")}
           onChange={handleChange("password")}
         />
         <Bir>
@@ -164,11 +139,21 @@ function Modal() {
           <div>성별</div>
           <label>
             여성
-            <input name="test" value={'woman'} type="radio" onChange={handleChange("gender")}/>
+            <input
+              name="test"
+              value={"woman"}
+              type="radio"
+              onChange={handleChange("gender")}
+            />
           </label>
           <label>
             남성
-            <input name="test" type="radio" value={'man'} onChange={handleChange("gender")}/>
+            <input
+              name="test"
+              type="radio"
+              value={"man"}
+              onChange={handleChange("gender")}
+            />
           </label>
         </Gender>
       </Body>

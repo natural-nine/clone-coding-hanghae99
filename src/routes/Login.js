@@ -1,17 +1,31 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
+import {useDispatch} from 'react-redux'
 import styled from "styled-components";
 //로고 이미지
 import logo from "../images/logo-signup.png";
 //모달 컴포넌트
 import Modal from "../components/SignupModal";
+import { LoginDB } from "../redux/modules/user";
 
 function Login() {
   let [modal, setModal] = useState(false);
 
-  const [email, setEmail] =useState('');
-  const [password, setPassword] = useState('');
+  const dispatch = useDispatch(); 
+  
+  const email = useRef(null);
+  const password = useRef(null);
 
-  //
+  const login = ()=>{
+    const login_db = {
+      mail : email.current.value,
+      password: password.current.value
+    }
+    if(login_db === ""){
+      window.alert('모든 정보를 다 입력해 주세요!')
+    }
+    dispatch(LoginDB(login_db));
+
+  }
   return (
     <All>
       {modal && <Test />}
@@ -26,10 +40,10 @@ function Login() {
         </Lcontainer>
         <Container>
           <div>
-            <input placeholder="이메일 또는 전화번호"></input>
-            <input placeholder="비밀번호"></input>
+            <input placeholder="이메일 또는 전화번호"  ref={email}></input>
+            <input placeholder="비밀번호" ref={password}></input>
           </div>
-          <Lobutton> 로그인 </Lobutton>
+          <Lobutton onClick={login}> 로그인 </Lobutton>
 
           <a href="https://www.facebook.com/login/identify/?ctx=recover&ars=facebook_login&from_login_screen=0">
             비밀번호를 잊으셨나요?{" "}
@@ -40,6 +54,7 @@ function Login() {
           <ModalButton
             onClick={() => {
               setModal(true);
+              
             }}
           >
             새 계정 만들기
