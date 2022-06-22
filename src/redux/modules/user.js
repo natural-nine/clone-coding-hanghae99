@@ -33,7 +33,7 @@ export const LoginDB = (login_info) => {
         window.alert("로그인 완료!")
         console.log(response.data)
         dispatch(setUser(response.data))
-        // window.location.replace('/test')
+        window.location.replace('/main')
       })
       .catch((error) => alert(error.response.data));
   }

@@ -58,7 +58,7 @@ const Main = () => {
     const token = localStorage.getItem("user_token"); 
     const list = useSelector((state) => state.post.data);
     
-    
+    // const userInfo = useSelector((state) => state.userInfo);
     
     useEffect(() => {
         dispatch(loadContentsDB());
@@ -83,8 +83,7 @@ const Main = () => {
     //         }
     //     })
     // }
-    
-  
+   
 //    console.log(token)
 const user = useSelector((state)=>state.user.user_info) 
 React.useEffect(()=>{ 
