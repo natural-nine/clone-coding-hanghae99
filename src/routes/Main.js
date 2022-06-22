@@ -58,7 +58,6 @@ const Main = () => {
     //     })
     // }
     //// 무한 스크롤 관련
-    const userToken = () => {localStorage.getItem("user_token");}; 
     const token = localStorage.getItem("user_token"); 
     const list = useSelector((state) => state.post.list);
 
