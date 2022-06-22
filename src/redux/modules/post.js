@@ -14,7 +14,7 @@ const initialState = {
 
 export const createContentsDB = (data) => {
     return function (dispatch, navigate){
-        axios.post("http://localhost:5001/postContents", data)
+        axios.post("http://54.180.114.134/api/board", data)
     .then((res)=>{
         console.log(res)
         dispatch(createContents(data))
@@ -28,7 +28,7 @@ export const createContentsDB = (data) => {
 
 export const loadContentsDB =  () => {
     return function(dispatch){
-        axios.get("http://localhost:5001/postContents")
+        axios.get("http://54.180.114.134/api/board")
         .then((res)=>{
             dispatch(loadContents(res.data))
             console.log(res.data ,"리덕스 로드")
