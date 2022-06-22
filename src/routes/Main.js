@@ -26,10 +26,10 @@ const MainBox = styled.div`
 const Main = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate()
-    const observerRef = React.useRef();
-    const boxRef = React.useRef(null);
+    // const observerRef = React.useRef();
+    // const boxRef = React.useRef(null);
 
-    const [isLogin, setIsLogin] = useState(false)
+    const [isLogin, setIsLogin] = useState(true)
     //무한 스크롤 관련
     // const [isData, setIsData] = useState(false);
     // const [infoArray, setInfoArray] = useState([]);
@@ -37,10 +37,7 @@ const Main = () => {
     // useEffect(() => {
     //         getInfo();
     // }, [])
-    // useEffect(() => {
-    //     observerRef.current = new IntersectionObserver(intersectionObserver); // IntersectionObserver
-    //     boxRef.current && observerRef.current.observe(boxRef.current);
-    // }, [infoArray])
+    
 
     // const getInfo = async () => {
     //     const res = await axios.get('http://localhost:5001/postContents'); // 서버에서 데이터 가져오기
@@ -59,8 +56,10 @@ const Main = () => {
     // }
     //// 무한 스크롤 관련
     const token = localStorage.getItem("user_token"); 
-    const list = useSelector((state) => state.post.list);
-
+    const list = useSelector((state) => state.post.data);
+    
+    
+    
     useEffect(() => {
         dispatch(loadContentsDB());
         if(token == null){
@@ -69,12 +68,25 @@ const Main = () => {
             setIsLogin(true);
         }
     },[])
-   
-    console.log(list , "this is list")
+    // useEffect(() => {
+    //     observerRef.current = new IntersectionObserver(intersectionObserver); // IntersectionObserver
+    //     boxRef.current && observerRef.current.observe(boxRef.current);
+    // }, [list])
+    
+    // const intersectionObserver = (entries, io) => {
+    //     entries.forEach((entry) => {
+    //         if(entry.isIntersecting) { // 관찰하고 있는 entry가 화면에 보여지는 경우
+    //             io.unobserve(entry.target); // entry 관찰 해제
+    //             // dispatch(loadContentsDB)(setInfoArray); // 데이터 가져오기
+    //             // getInfo();
+    //             dispatch(loadContentsDB())
+    //         }
+    //     })
+    // }
     
   
 //    console.log(token)
-    console.log(isLogin)
+    
     return(
         <>
         {isLogin ? (
@@ -87,7 +99,7 @@ const Main = () => {
             <MainBox>
         <StoriesBox/>
         <ContentsBox />
-        <ContentsListBox/>
+        <ContentsListBox  />
         </MainBox>
         </Wrap>) : (navigate("/"))}
         </>

@@ -92,8 +92,8 @@ const ContentsPost = (props) => {
         console.log(isImg, textValue);
 
         let data = {
-            contents:textValue,
-            image:isImg
+            content:textValue,
+            imageUrl:"gaga"
         };
         dispatch(createContentsDB(data));  
         }
