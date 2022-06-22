@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
 import CommentInput from "../components/CommentInput";
@@ -9,17 +9,17 @@ const Comment = () => {
   const dispatch = useDispatch();
   //댓글 데이터 가져오기
   const comments = useSelector((state)=> state.commentSlice.comments)
-
   React.useEffect(()=>{
     dispatch(loadCommentAX())
     
   },[])
-  console.log(comments)
+  // console.log(comments)
   return(
      <>
      
      <Container>
-      <CommentInput/>{/* 댓글뿌려주기 */}
+      <CommentInput/>
+      {/* 댓글뿌려주기 */}
       {comments.map((c,i)=>{return(  
       <div key={i}>
       <div>

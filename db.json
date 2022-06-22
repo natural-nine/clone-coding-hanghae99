@@ -60,6 +60,24 @@
       "contents": "테스트 2",
       "createdAt": "2020-06-17",
       "modifiedAt": "2020-06-17"
+    },
+    {
+      "lastName": "김",
+      "firstName": "수박",
+      "contents": "한번 추가를 해볼게요",
+      "id": 3
+    },
+    {
+      "lastName": "김",
+      "firstName": "수박",
+      "contents": "다시 테스트 합니다",
+      "id": 4
+    },
+    {
+      "lastName": "김",
+      "firstName": "수박",
+      "contents": "네 좋아요 잘 등록되는중~",
+      "id": 5
     }
   ]
 }
