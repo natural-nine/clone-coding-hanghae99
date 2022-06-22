@@ -86,7 +86,10 @@ const Main = () => {
     
   
 //    console.log(token)
-    
+const user = useSelector((state)=>state.user.user_info) 
+React.useEffect(()=>{ 
+    console.log(user);
+ },[user])
     return(
         <>
         {isLogin ? (

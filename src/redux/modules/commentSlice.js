@@ -20,6 +20,13 @@ export const createCommentAX = (comments) => {
   }
 }
 
+// export const deleteCommentAX = () => {
+//   return function(){
+//     axios.delete(`http://localhost:5001/comments`)
+//     .then(()=>)
+//   }
+// }
+
 //action.payload = 내가 보내주는 값
 // state = initialState
 const commentSlice = createSlice({
@@ -33,10 +40,6 @@ const commentSlice = createSlice({
     // 댓글 생성하는 함수 store에 넣기
     createComment(state, action){
       state.comments.push(action.payload)
-    },
-    //댓글 삭제하는 함수 store에 넣기
-    deleteComment(state,action){
-      
     }
 
   }
