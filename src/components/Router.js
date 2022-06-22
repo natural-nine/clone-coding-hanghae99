@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Main from "../routes/Main";
 import Login from "../routes/Login";
-import Page from "../routes/Page";
+import Comment from "../components/Comment";
 
 
 const AppRouter = () => {
@@ -11,7 +11,7 @@ const AppRouter = () => {
         <Routes>
             <Route path="/*" element={<Login/>} />
             <Route path="/main" element={<Main/>} />
-            <Route path="/test" element={<Page/>}/>
+            <Route path="/test" element={<Comment/>}/>
         </Routes>
         </>
     )

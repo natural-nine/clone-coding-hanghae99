@@ -1,6 +1,6 @@
 // import { createStore, combineReducers, applyMiddleware } from 'redux'
 //툴킷 사용시 import
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore } from "@reduxjs/toolkit";
 
 // import { getStorage } from "firebase/storage";
 // import { initializeApp } from "firebase/app";
@@ -9,10 +9,10 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import user from "../redux/modules/user";
 import post from "../redux/modules/post";
+import commentSlice from "./modules/commentSlice";
 import profile from "../redux/modules/profile";
 
 //만든 모듈 import하고 combineReducers({ }); 안에 넣어주기
-
 
 // 이미지 처리하기 위해 임시로 firestore 사용 변경할 수 있음.
 // const firebaseConfig = {
@@ -25,7 +25,6 @@ import profile from "../redux/modules/profile";
 //     measurementId: "G-MB2Q141N7N",
 //   };
 
-
 // const app = initializeApp(firebaseConfig);
 
 //툴킷에는 thunk 포함되어있으므로 필요없음
@@ -33,13 +32,14 @@ import profile from "../redux/modules/profile";
 // const rootReducer = combineReducers({user, post});
 // const enhancer = applyMiddleware(...middlewares)
 
-
 const store = configureStore({
-  reducer:{
-  user,
-  post,
-  profile
-  }});
+  reducer: {
+    commentSlice,
+    user,
+    post,
+    profile,
+  },
+});
 
 // export const storage = getStorage(app)
 

@@ -27,7 +27,9 @@ const CommentInput = () => {
 };
 
 const Box = styled.div`
-
+p{
+  font-size: 12px;
+}
 `
 
 const Input = styled.input`
@@ -49,7 +51,7 @@ button{
   border-radius: 50px;
   position: relative;
   left: 370px;
-  bottom: 45px;
+  bottom: 41px;
   :hover{
     background-color: #E4E6E9;
   }

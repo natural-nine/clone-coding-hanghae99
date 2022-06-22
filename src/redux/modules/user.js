@@ -62,15 +62,7 @@ const userSlice = createSlice({
     //회원가입
     createUser :(state,action) => {
       state.user_info.push(action.payload)
-    },
-    //로그인
-    setuser:(state, action)=>{
-
     }
-
-
-
-
   },
 })
 
