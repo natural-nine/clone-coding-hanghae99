@@ -6,8 +6,10 @@ import logo from "../images/logo-signup.png";
 //모달 컴포넌트
 import Modal from "../components/SignupModal";
 import { LoginDB } from "../redux/modules/user";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+  const navigate =useNavigate();
   let [modal, setModal] = useState(false);
 
   const dispatch = useDispatch(); 
@@ -24,7 +26,7 @@ function Login() {
       window.alert('모든 정보를 다 입력해 주세요!')
     }
     dispatch(LoginDB(login_db));
-
+    navigate('/test')
   }
   return (
     <All>

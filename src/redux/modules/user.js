@@ -13,9 +13,9 @@ export const add_user_AX = (post_info) => {
   return function (dispatch) {
     axios.post('http://54.180.114.134/user/signup', post_info)
       .then((response) => {
-        dispatch(createUser(post_info))
         window.alert("회원가입 완료!")
         window.location.replace('/*')
+        //replace 지양 (새로고침시 리덕스 데이터 날아감)
       })
       .catch((error) => {
       console.log(error.response.data)
@@ -31,11 +31,14 @@ export const LoginDB = (login_info) => {
       .then((response) => {
         localStorage.setItem("user_token", response.data.token);
         window.alert("로그인 완료!")
-        window.location.replace('/main')
+        console.log(response.data)
+        dispatch(setUser(response.data))
+        // window.location.replace('/test')
       })
       .catch((error) => alert(error.response.data));
   }
 }
+
 
 // 현재 유저 정보 확인
 // export const loginCheckDB = () => {
@@ -56,16 +59,17 @@ export const LoginDB = (login_info) => {
 const userSlice = createSlice({
   name: 'user',
   initialState : {
-    user_info: []
+    user_info: {}
   },
   reducers: {
-    //회원가입
-    createUser :(state,action) => {
-      state.user_info.push(action.payload)
-    }
-  },
+
+    setUser: (state, action)=>{
+    state.user_info = action.payload
+    // console.log(action.payload)
+  }
+  }
 })
 
-export const {createUser} = userSlice.actions;
+export const { setUser} = userSlice.actions;
 
 export default userSlice.reducer;

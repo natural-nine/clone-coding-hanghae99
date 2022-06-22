@@ -22,6 +22,7 @@ const CommentInput = () => {
         contents : comment_ref.current.value,
       }
       dispatch(createCommentAX(new_comment))
+      e.target.value='';
     }
   }
   return (

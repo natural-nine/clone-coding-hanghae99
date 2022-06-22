@@ -22,6 +22,7 @@ export const createCommentAX = (comments) => {
   }
 }
 
+
 const commentSlice = createSlice({
   name: 'comment',
   initialState,
@@ -34,7 +35,14 @@ const commentSlice = createSlice({
     createComment(state, action){
       state.comments.push(action.payload)
     }
-  },
+    //댓글 삭제하는 함수 store에 넣기
+    // deleteComment(state,action){
+      
+    // }
+
+  }
+
+
 })
 
 export const {loadComments, createComment} = commentSlice.actions
