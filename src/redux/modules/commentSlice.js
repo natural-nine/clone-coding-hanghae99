@@ -1,31 +1,36 @@
 import { createSlice } from '@reduxjs/toolkit'
 import axios from 'axios';
+import instance from '../../shared/Request';
 
 
 //미들웨어
 //post id값 넣어주기
-export const loadCommentAX = () =>{
+export const loadCommentAX = (contentsId) =>{
   return function(dispatch){
     //http://54.180.114.134
-      // axios.get(`http://54.180.121.151/api/comment/${post_id}`)
-      axios.get(` http://localhost:5001/comments`)
+      axios.get(`http://54.180.121.151/board/get/${contentsId}`)
+      // axios.get(` http://localhost:5001/comments$`)
       .then(response =>dispatch(loadComments(response.data)))
+      
   }
 }
-export const createCommentAX = (comments) => {
+export const createCommentAX = (comments, commentsId) => {
   return function (dispatch) {
-      // axios.post(`http://54.180.121.151/api/comment/${post_id}`, comments)
-      axios.post(` http://localhost:5001/comments`, comments)
+      instance.post(`http://54.180.121.151/api/board/post/${commentsId}`, comments)
+      // axios.post(` http://localhost:5001/comments`, comments)
     .then(() => dispatch(createComment(comments)))
   }
 }
 
-// export const deleteCommentAX = () => {
-//   return function(){
-//     axios.delete(`http://localhost:5001/comments`)
-//     .then(()=>)
-//   }
-// }
+export const deleteCommentAX = (comment) => {
+  return function(dispatch){
+    axios.delete(`http://localhost:5001/comments`, comment)
+    .then((response)=> dispatch(loadComments(response.data)))
+    .catch((error)=>{
+      console.log(error.response.data)
+    })
+  }
+}
 
 //action.payload = 내가 보내주는 값
 // state = initialState

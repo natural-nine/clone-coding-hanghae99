@@ -8,20 +8,18 @@ import gif from "../images/gif.png";
 import sticker from "../images/sticker.png";
 import { createCommentAX } from "../redux/modules/commentSlice";
 
-const CommentInput = () => {
+const CommentInput = (props) => {
   const dispatch = useDispatch();
-
+  // console.log(props.post_id.post_id, '제프롭스에요');
   //댓글 생성
   const comment_ref = useRef(null);
   //인풋 엔터 누를시에 실행되는 함수
   const Entercheck = (e) => {
     if(e.key ==='Enter'){
       const new_comment = { 
-        lastName: "김",
-        firstName: "수박", 
         contents : comment_ref.current.value,
       }
-      dispatch(createCommentAX(new_comment))
+      dispatch(createCommentAX(new_comment,props.post_id.post_id))
       e.target.value='';
     }
   }
@@ -57,7 +55,7 @@ const Box = styled.div`
 `;
 
 const Input = styled.input`
-  width: 500px;
+  width: 400px;
   height: 35px;
   border-radius: 20px;
   font-size: 15px;
@@ -74,7 +72,7 @@ const Button = styled.div`
     border: 0px;
     border-radius: 50px;
     position: relative;
-    left: 370px;
+    left: 270px;
     bottom: 41px;
     :hover {
       background-color: #e4e6e9;

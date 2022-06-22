@@ -90,7 +90,7 @@ const ContentsBox = () => {
             <TopBox>
             <Img src={user}/>
             <WriteBox >
-                <Span onClick={openModal}>?? 님, 무슨 생각을 하고 계신가요?</Span>
+                <Span onClick={openModal}>{localStorage.getItem('user_name')} 님, 무슨 생각을 하고 계신가요?</Span>
                 <ContentsModal open={modalOpen} close={closeModal} header="">
                     <ContentsPost  close={setModalOpen}/>
                 </ContentsModal>

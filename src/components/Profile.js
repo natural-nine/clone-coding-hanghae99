@@ -74,7 +74,7 @@ const Profile = () => {
             <ProfileBox>
                 <UserBox>
                     {defaultImg ? (<Img src={isImg}/>):<Img src={user}/>}    
-                    <Span>홍길동</Span>
+                    <Span>{localStorage.getItem('user_name')}</Span>
                 </UserBox>
                 <BtnBox>
                     <Input onChange={onImgChange} ref={profileImg} type={"file"} accept="image/*"/>

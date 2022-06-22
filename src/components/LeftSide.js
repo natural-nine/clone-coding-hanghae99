@@ -55,11 +55,12 @@ const Down = styled(FaSortDown)`
 `
 
 const LeftSide = () => {
+    
     return(
         <Wrap>
             <EtcBox>
                 <Img src={user}/>
-                <Span>홍길동</Span>
+                <Span>{localStorage.getItem("user_name")}</Span>
             </EtcBox>
             <EtcBox>
                 <Img src={one}/>

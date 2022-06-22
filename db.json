@@ -66,6 +66,10 @@
       "firstName": "수박",
       "contents": "안녕하세요",
       "id": 3
+    },
+    {
+      "contents": "댓글 작성 테스트",
+      "id": 4
     }
   ]
 }

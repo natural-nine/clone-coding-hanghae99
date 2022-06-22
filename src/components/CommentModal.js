@@ -3,10 +3,18 @@ import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import option from '../images/option.png'
 import { add_user_AX } from "../redux/modules/user";
+import { deleteCommentAX } from "../redux/modules/commentSlice";
 
 //수정삭제 모달창 띄우기
-function CommentModal() {
+function CommentModal(props) {
+  console.log(props, '프롭스 2')
+  const dispatch = useDispatch();
+
   const [modal,setmodal] = useState(false);
+
+  const delete_comment=()=>{
+    dispatch(deleteCommentAX())
+  }
 
   return (
     <div>
@@ -17,7 +25,7 @@ function CommentModal() {
       </OptonButton>
       <Container modal={modal}>
       <button>수정</button>
-      <button>삭제</button>
+      <button onClick={delete_comment}>삭제</button>
     </Container>
     </div>
   );

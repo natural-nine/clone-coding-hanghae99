@@ -6,7 +6,8 @@ import user from "../images/init-user.png";
 import eight from "../images/8.png"
 import pan from "../images/판호.jpeg"
 import axios from "axios";
-
+//댓글 컴포넌트 입니다.
+import Comment from "./Comment";
 
 const MainBox = styled.div`
     width: 500px;
@@ -26,7 +27,6 @@ const MainBox = styled.div`
 
 const ContentsBox = styled.div`
     width: 490px;
-    height: 300px;
     border: 1px solid black;
 `
 const UserBox = styled.div`
@@ -78,7 +78,7 @@ const ContentsListBox = () => {
     const userMail = localStorage.getItem("user_mail"); 
     console.log(userMail, "list mail")
     const dispatch = useDispatch();
-    
+   
     useEffect(() => {
         isSetMail(userMail);
         if(isMail == userMail){
@@ -167,7 +167,9 @@ const ContentsListBox = () => {
                        </ImgBox>
                        <h3>{item.content}</h3>
                         <hr />
-                    </ContentsBox>
+                        <Comment post_id={list[idx].postId}/>
+                        {/* 상기 댓글 컴포넌트 입니다. */}
+                    </ContentsBox >
                 )
             })}
             

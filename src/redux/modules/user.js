@@ -30,10 +30,11 @@ export const LoginDB = (login_info) => {
     axios.post('http://54.180.114.134/user/login', login_info)
       .then((response) => {
         localStorage.setItem("user_token", response.data.token);
+        localStorage.setItem("user_name", response.data.familyName+response.data.givenName);
+       
         window.alert("로그인 완료!")
         console.log(response.data)
         dispatch(setUser(response.data))
-        window.location.replace('/main')
       })
       .catch((error) => alert(error.response.data));
   }
