@@ -41,7 +41,7 @@
       "id": 0,
       "lastName": "kim",
       "firstName": "minjae",
-      "contents": "댓글입니다",
+      "comments": "댓글입니다",
       "createdAt": "2020-06-17",
       "modifiedAt": "2020-06-17"
     },
@@ -49,23 +49,9 @@
       "id": 1,
       "lastName": "lee",
       "firstName": "young",
-      "contents": "테스트 중입니다",
+      "comments": "테스트 중입니다",
       "createdAt": "2020-06-17",
       "modifiedAt": "2020-06-17"
-    },
-    {
-      "id": 2,
-      "lastName": "김",
-      "firstName": "수박",
-      "contents": "테스트 2",
-      "createdAt": "2020-06-17",
-      "modifiedAt": "2020-06-17"
-    },
-    {
-      "lastName": "김",
-      "firstName": "수박",
-      "contents": "안녕하세요",
-      "id": 3
     }
   ]
 }

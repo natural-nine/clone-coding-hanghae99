@@ -19,7 +19,13 @@ export const createCommentAX = (comments) => {
     .then(() => dispatch(createComment(comments)))
   }
 }
-
+export const putCommentAX = (comment) =>{
+  return function (dispatch){
+    // axios.put(`http://54.180.114.134/api/board/put${contentsId}`/${id},coment)
+    axios.put(`http://localhost:5001/comments`,comment)
+    .then(()=> dispatch(putComment(comment)))
+  }
+}
 // export const deleteCommentAX = () => {
 //   return function(){
 //     axios.delete(`http://localhost:5001/comments`)
@@ -40,12 +46,22 @@ const commentSlice = createSlice({
     // 댓글 생성하는 함수 store에 넣기
     createComment(state, action){
       state.comments.push(action.payload)
-    }
+    },
+    putComment(state,action){
+      const arr = state.comments.map((comment) => {
+        if (comment.id === action.id) {
+          return {...comment, ...action.payload.conmments};
+        } else {
+          return comment;
+        }
+      });
 
+      return {comments: arr};
+    }
   }
 
 
 })
 
-export const {loadComments, createComment} = commentSlice.actions
+export const {loadComments, createComment, putComment} = commentSlice.actions
 export default commentSlice.reducer

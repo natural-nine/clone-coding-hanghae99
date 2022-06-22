@@ -4,10 +4,14 @@ import { useDispatch } from "react-redux";
 import option from '../images/option.png'
 import { add_user_AX } from "../redux/modules/user";
 
-//수정삭제 모달창 띄우기
-function CommentModal() {
-  const [modal,setmodal] = useState(false);
 
+//수정삭제 모달창 띄우기
+function CommentModal({setPut}) {
+  const [modal,setmodal] = useState(false);
+//수정버튼 눌렀을때  
+  const putbutton =()=>{
+    setPut(true);
+  }
   return (
     <div>
       <OptonButton onClick={()=>{
@@ -16,7 +20,7 @@ function CommentModal() {
       }}><img src={option} alt=''/>
       </OptonButton>
       <Container modal={modal}>
-      <button>수정</button>
+      <button onClick={putbutton}>수정</button>
       <button>삭제</button>
     </Container>
     </div>
