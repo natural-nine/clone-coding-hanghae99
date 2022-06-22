@@ -26,7 +26,7 @@ function Login() {
       window.alert('모든 정보를 다 입력해 주세요!')
     }
     dispatch(LoginDB(login_db));
-    navigate('/test')
+    navigate('/main')
   }
   return (
     <All>

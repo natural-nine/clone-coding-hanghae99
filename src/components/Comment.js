@@ -32,10 +32,6 @@ const Comment = () => {
       //current 는 like
     }
 
-  const user =useSelector((state)=>state)
-  React.useEffect(()=>{
-    console.log(user)
-  },[user])
   return (
     <>
       <Container>

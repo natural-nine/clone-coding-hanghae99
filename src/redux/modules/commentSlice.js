@@ -2,8 +2,6 @@ import { createSlice } from '@reduxjs/toolkit'
 import axios from 'axios';
 
 
-const initialState = {comments:[]}
-
 //미들웨어
 //post id값 넣어주기
 export const loadCommentAX = () =>{
@@ -22,10 +20,11 @@ export const createCommentAX = (comments) => {
   }
 }
 
-
+//action.payload = 내가 보내주는 값
+// state = initialState
 const commentSlice = createSlice({
   name: 'comment',
-  initialState,
+  initialState:  {comments:[]},
   reducers: {
     // 댓글 뿌려주는 함수 store에 넣기
     loadComments(state,action) {
@@ -34,11 +33,11 @@ const commentSlice = createSlice({
     // 댓글 생성하는 함수 store에 넣기
     createComment(state, action){
       state.comments.push(action.payload)
-    }
+    },
     //댓글 삭제하는 함수 store에 넣기
-    // deleteComment(state,action){
+    deleteComment(state,action){
       
-    // }
+    }
 
   }
 
