@@ -6,7 +6,7 @@ import styled from "styled-components";
 import user from "../images/init-user.png"
 import { createContentsDB } from "../redux/modules/post";
 import {isUpdate} from "../recoil";
-import { storage } from "../redux/configStore";
+import { storage } from "../redux/configstore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 
 

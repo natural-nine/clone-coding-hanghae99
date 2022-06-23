@@ -201,7 +201,7 @@ const ContentsListBox = () => {
                        </ImgBox>
                        
                        
-                        <Comment post_id={list[idx].postId}/>
+                       <Comment post_id={item.postId} id={idx}/>
                         {/* 상기 댓글 컴포넌트 입니다. */}
                     </ContentsBox >
                 )

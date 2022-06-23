@@ -78,7 +78,7 @@ function Modal() {
         </div>
         <button
           onClick={() => {
-            alert(`버튼을 눌렀어!`);
+            window.location.replace('/*')
           }}
         >
           X
@@ -100,6 +100,7 @@ function Modal() {
         />
         <input
           className="name"
+          type='password'
           placeholder="새 비밀번호"
           onChange={handleChange("password")}
         />

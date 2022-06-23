@@ -7,24 +7,25 @@ import instance from '../../shared/Request';
 //post id값 넣어주기
 export const loadCommentAX = (contentsId) =>{
   return function(dispatch){
-    //http://54.180.114.134
-      axios.get(`http://54.180.121.151/board/get/${contentsId}`)
-      // axios.get(` http://localhost:5001/comments$`)
-      .then(response =>dispatch(loadComments(response.data)))
-      
+      // instance.get(`http://54.180.114.134/api/board/get/${contentsId}`)
+      // .then(response => {})
+        // response => (dispatch(loadComments(response.data))))     
   }
 }
 export const createCommentAX = (comments, commentsId) => {
   return function (dispatch) {
-      instance.post(`http://54.180.121.151/api/board/post/${commentsId}`, comments)
+      instance.post(`http://54.180.114.134/api/board/post/${commentsId}`, comments)
       // axios.post(` http://localhost:5001/comments`, comments)
     .then(() => dispatch(createComment(comments)))
+    .catch((error)=>{
+      console.log(error.response.data)
+    })
   }
 }
 
-export const deleteCommentAX = (comment) => {
+export const deleteCommentAX = (commentsId,id) => {
   return function(dispatch){
-    axios.delete(`http://localhost:5001/comments`, comment)
+    instance.delete(`http://54.180.114.134/api/board/delete/${commentsId}/${id}`)
     .then((response)=> dispatch(loadComments(response.data)))
     .catch((error)=>{
       console.log(error.response.data)

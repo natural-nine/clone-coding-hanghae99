@@ -7,6 +7,7 @@ import logo from "../images/logo-signup.png";
 import Modal from "../components/SignupModal";
 import { LoginDB } from "../redux/modules/user";
 import { useNavigate } from "react-router-dom";
+import Logout from "../components/Logout";
 
 function Login() {
   const navigate =useNavigate();
@@ -45,7 +46,7 @@ function Login() {
         <Container>
           <div>
             <input placeholder="이메일 또는 전화번호"  ref={email}></input>
-            <input placeholder="비밀번호" ref={password}></input>
+            <input type='password' placeholder="비밀번호" ref={password}></input>
           </div>
           <Lobutton onClick={login}> 로그인 </Lobutton>
 
@@ -64,7 +65,7 @@ function Login() {
             새 계정 만들기
           </ModalButton>
         </Container>
-    
+            {/* <Logout/> */}
       </Box>
       <Footer>
         <p>

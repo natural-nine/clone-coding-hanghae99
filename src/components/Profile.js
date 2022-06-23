@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import user from "../images/init-user.png"
+import Logout from "./Logout";
 
 const Wrap = styled.div`
     width: 250px;
@@ -82,6 +83,7 @@ const Profile = () => {
                     <Btn>저장</Btn>
                 </BtnBox>
             </ProfileBox>
+            <Logout/>
         </Wrap>
     );
 };

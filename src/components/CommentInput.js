@@ -10,16 +10,16 @@ import { createCommentAX } from "../redux/modules/commentSlice";
 
 const CommentInput = (props) => {
   const dispatch = useDispatch();
-  // console.log(props.post_id.post_id, '제프롭스에요');
+  // console.log(props.post_id, '제프롭스에요');
   //댓글 생성
   const comment_ref = useRef(null);
   //인풋 엔터 누를시에 실행되는 함수
   const Entercheck = (e) => {
     if(e.key ==='Enter'){
       const new_comment = { 
-        comments : comment_ref.current.value,
+        comment : comment_ref.current.value,
       }
-      dispatch(createCommentAX(new_comment,props.post_id.post_id))
+      props.addFunc(new_comment);
       e.target.value='';
     }
   }

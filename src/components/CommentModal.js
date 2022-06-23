@@ -1,19 +1,22 @@
 import styled from "styled-components";
 import { useEffect, useRef, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import option from '../images/option.png'
 import { add_user_AX } from "../redux/modules/user";
 import { deleteCommentAX } from "../redux/modules/commentSlice";
 
+import instance from "../shared/Request";
+
 //수정삭제 모달창 띄우기
 function CommentModal(props) {
-  console.log(props, '프롭스 2')
+  const comment_id = props.comment_id;
+  const id = props.id  
+  // console.log(id)
   const dispatch = useDispatch();
-
   const [modal,setmodal] = useState(false);
 
   const delete_comment=()=>{
-    dispatch(deleteCommentAX())
+    props.removeFunc(Number(comment_id));
   }
 
   return (
