@@ -6,7 +6,9 @@ import beom from "../images/범석.jpeg"
 import pan from "../images/판호.jpeg"
 import hyeong from "../images/행배.jpeg"
 import {FaPlus} from "react-icons/fa"
-
+import prada from "../images/prada-model.jpeg"
+import fendi from "../images/fendi-model.jpeg"
+import sant from "../images/sant.jpeg"
 
 const Wrap = styled.div`
     display: flex;
@@ -81,21 +83,21 @@ const StoriesBox = () => {
             </ImgBox>
             <ImgBox>
                 <ImgBox2>
-                    <Img2 src={beom} />
+                    <Img2 src={prada} />
                 </ImgBox2>
-                <Img src={criminal}/>
+                <Img src={prada}/>
             </ImgBox>
             <ImgBox>
                 <ImgBox2>
-                    <Img2 src={pan} />
+                    <Img2 src={fendi} />
                 </ImgBox2>
-                <Img src={criminal}/>
+                <Img src={fendi}/>
             </ImgBox>
             <ImgBox>
                 <ImgBox2>
-                    <Img2 src={hyeong} />
+                    <Img2 src={sant} />
                 </ImgBox2>
-                <Img src={criminal}/>
+                <Img src={sant}/>
             </ImgBox>
         </Wrap>
     );

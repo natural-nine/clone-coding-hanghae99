@@ -3,8 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { deleteContentsDB, loadContentsDB } from "../redux/modules/post";
 import user from "../images/init-user.png";
-import eight from "../images/8.png"
-import pan from "../images/판호.jpeg"
 import {FaTrashAlt} from "react-icons/fa"
 //댓글 컴포넌트 입니다.
 import Comment from "./Comment";
@@ -14,8 +12,8 @@ const MainBox = styled.div`
     height: 350px;
     margin: auto;
     margin-top: 20px;
-    background-color: #fff;
-    border-radius: 10px;
+    
+    
     padding: 5px;
    
     /* box-shadow:  0px 2px 8px 0px #7f8fa6;; */
@@ -197,7 +195,7 @@ const ContentsListBox = () => {
                         <H3>{item.content}</H3>
                        <ImgBox>
                             
-                            <Img src={pan}/>
+                            <Img />
                        </ImgBox>
                        
                        
