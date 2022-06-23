@@ -49,7 +49,7 @@ const Comment = (props) => {
                     {c.lastName}
                     {c.firstName}
                   </p>
-                  <div>{c.contents}</div>
+                  <div>{c.comments}</div>
                 </CommentBox>
               </div>
               

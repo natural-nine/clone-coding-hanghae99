@@ -17,7 +17,7 @@ const CommentInput = (props) => {
   const Entercheck = (e) => {
     if(e.key ==='Enter'){
       const new_comment = { 
-        contents : comment_ref.current.value,
+        comments : comment_ref.current.value,
       }
       dispatch(createCommentAX(new_comment,props.post_id.post_id))
       e.target.value='';
