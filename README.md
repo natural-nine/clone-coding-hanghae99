@@ -1,70 +1,88 @@
-# Getting Started with Create React App
+# 페이스북 클론 코딩
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<img src='https://cdn.icon-icons.com/icons2/555/PNG/512/facebook_icon-icons.com_53612.png' width="50" height="50"/>
 
-## Available Scripts
+페이스북이 만든 리액트로 페이스북 클론코딩 해보기😁 !
 
-In the project directory, you can run:
+## 📆 프로젝트 기간
 
-### `yarn start`
+2022년 6월 17일 ~ 6월 23일
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+                                              🛠 TeStack 🛠
 
-### `yarn test`
+<img src="https://img.shields.io/badge/spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white"> <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black"> <img src="https://img.shields.io/badge/gradle-02303A?style=for-the-badge&logo=gradle&logoColor=white"> <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white"> <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"> <img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white"> 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+##  👩🏻‍💻👨🏻‍💻 Members👩🏻‍💻👨🏻‍💻 
 
-### `yarn build`
+### FrontEnd 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+정예빈 : 로그인 , 회원가입, 댓글 생성, 작성, 삭제  
+송완준 : 메인페이지 포스트 생성, 작성, 삭제
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### BackEnd
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+권다솔: JWT 회원가입/로그인 완성  
+신제민: 댓글 기능 CRUD 완성,게시글&댓글 좋아요 완성, 채팅 기능(로컬 기능)  
+차지훈: 게시글 CRUD 완성, 게시글 이미지 미완성  
 
-### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 🎬 시연 영상 
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 시연 영상 
+> https://youtu.be/OJcXBu14DBg
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 💻 핵심기능 
+ - 로그인 / 회원가입  
 
-## Learn More
+JWT를 이용한 로그인과 회원가입
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+모달창을 이용해 회원가입을 할 수 있습니다.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+-  메인페이지
+  
 
-### Analyzing the Bundle Size
+  글 작성 & 삭제 : 글을 작성하고 & 삭제할 수 있습니다.
+  
+  댓글  : 게시글에 댓글을 달고 & 삭제할 수 있습니다.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+##  🛠️ 사용기술 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+<code>FrontEnd </code>
+- React
+- Redux
+- Axios
+- Redux-toolkit
+- Styled-Components
+- Tool : Git, Notion, Figma
+  
+  
+<code>BackEnd</code> 
+ Server: AWS EC2 (Ubuntu 18.04 LTS)
+ Database: MongoDB
+ Runtime Flatform : Node.js
+ Tool : Git, Notion
+  
 
-### Advanced Configuration
+##  뷰
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### 로그인
+<img width="307" src="https://ifh.cc/g/0F5S0G.png">
 
-### Deployment
+### 회원가입 
+<img width="307" src="https://ifh.cc/g/nVsxqh.png">
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `yarn build` fails to minify
+### 메인 페이지
+<img width="307" src="https://ifh.cc/g/0F5S0G.png">
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## API 명세서
+<img width="307" alt="스크린샷 2022-06-23 18 34 20" src="https://user-images.githubusercontent.com/68536103/175267841-512f11f3-2687-41fe-b706-bc0b3aacdf74.png">
+
+## ERD
+<img width="307" src="https://user-images.githubusercontent.com/68536103/175215683-7a85a9a6-0059-44f9-b780-bddfd7d863b6.png">

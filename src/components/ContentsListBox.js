@@ -25,6 +25,11 @@ const MainBox = styled.div`
 
 const ContentsBox = styled.div`
     width: 490px;
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    padding: 10px;
+    box-shadow: 5px 5px 20px 0.5px #ddd;
    
 `
 const UserBox = styled.div`
@@ -77,6 +82,9 @@ const DeleteBox = styled.div`
 `
 const DeleteBtn = styled.button`
     border: none;
+    background-color: transparent;
+    width: 30px;
+    height:30px;
 `
 
 const DeleteIcon = styled(FaTrashAlt)`

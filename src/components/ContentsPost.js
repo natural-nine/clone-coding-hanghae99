@@ -45,7 +45,11 @@ const ContentsForm = styled.form`
 const TextInput = styled.input`
     padding:30px;
     border: none;
-    height: 30px;
+    height: 250px;
+    :focus{
+        outline: 1px solid gray;
+        border-radius: 10px;
+    }
 `
 const ConImg = styled.img`
     width: auto;
@@ -155,11 +159,11 @@ const ContentsPost = (props) => {
             </UserBox>
             <ContentsForm onSubmit={onSubmit}>
                 <TextInput ref={textRef}/>
-                <Input onChange={onImgChange} ref={conImg} type={"file"} accept="image/*"/>
+                {/* <Input onChange={onImgChange} ref={conImg} type={"file"} accept="image/*"/>
                 {defaultImg ? (<ConImg src={isImg}/>):
                 (<SelectImgBox onClick={imgClick}>
                     <Span2>이미지를 선택해 주세요.</Span2>
-                </SelectImgBox>)}
+                </SelectImgBox>)} */}
                 <Btn >게시</Btn>
             </ContentsForm>
         </Wrap>
