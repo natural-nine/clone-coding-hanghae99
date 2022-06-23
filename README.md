@@ -62,10 +62,10 @@ JWT를 이용한 로그인과 회원가입
   
   
 <code>BackEnd</code> 
- Server: AWS EC2 (Ubuntu 18.04 LTS)
- Database: MongoDB
- Runtime Flatform : Node.js
- Tool : Git, Notion
+- Server: AWS EC2 (Ubuntu 18.04 LTS)
+- Database: Mysql
+- Runtime Flatform : Spring
+- Tool : Gradle, github
   
 
 ##  뷰
