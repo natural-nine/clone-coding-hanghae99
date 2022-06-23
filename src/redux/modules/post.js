@@ -1,5 +1,9 @@
 import axios from "axios";
 import instance from "../../shared/Request";
+import { createSlice } from '@reduxjs/toolkit'
+
+
+
 const LOAD = 'contents/LOAD';
 const CREATE = 'contents/CREATE';
 //컨텐츠 삭제
@@ -11,14 +15,16 @@ const initialState = {
 }
 
 
-
+// 게시글 포스트
 export const createContentsDB = (data) => {
     return function (dispatch){
         instance.post("/api/board", data)
     .then((res)=>{
+        console.log(data, "img")
         console.log(res, "response")
         console.log(res.data, "test")
-        dispatch(createContents(data))
+        
+        dispatch(createContents(res.data))
     })
     .catch((error)=>{
         console.log(error)
@@ -26,12 +32,14 @@ export const createContentsDB = (data) => {
     } 
 }
 
+//게시글 불러오기
 export const loadContentsDB =  () => {
     return function(dispatch){ 
         axios.get("http://54.180.114.134/board")
         .then((res)=>{
-            dispatch(loadContents(res.data))
             console.log(res.data ,"리덕스 로드")
+            dispatch(loadContents(res.data))
+            
         });
         
         // contentsList((cur)=> [...cur, ...res.data])
@@ -44,13 +52,15 @@ export const loadContentsDB =  () => {
     }
 }
 
-
+//게시글 삭제
 export const deleteContentsDB = (pid) => {
     return function (dispatch) {
         instance.delete(`http://54.180.114.134/api/board/${pid}`)
         .then((res) => {
           console.log(res);
           window.alert("게시글이 삭제되었습니다.");
+          // 새로고침을 하면 안되지만 시간이 부족한 관계상 새로고침...
+          window.location.replace('/main');
         //   dispatch(deleteContents());
         })
         .catch((err) => {
@@ -96,3 +106,22 @@ export function createContents(data ) {
 export function loadContents (data) {
     return { type: LOAD, data };
   }
+
+// const postSlice = createSlice({
+//     name : "contents",
+//     initialState: {
+//         data:[] 
+//     },
+//     reducers:{
+//         loadContents: (state, action) => {
+//             state.data = action.payload;
+//           },
+//         createContents: (state, action) => {
+//             state.data = action.payload;
+//           },
+//     }
+// })
+
+// export const {loadContents,createContents} = postSlice.actions;
+
+// export default postSlice.reducer;

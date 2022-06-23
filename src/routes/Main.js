@@ -60,6 +60,7 @@ const Main = () => {
     
     // const userInfo = useSelector((state) => state.userInfo);
     
+    //현재 토큰 값 저장 토큰 없을 시 /main 못감
     useEffect(() => {
         dispatch(loadContentsDB());
         if(token == null){
@@ -85,12 +86,10 @@ const Main = () => {
     // }
    
 //    console.log(token)
-const user = useSelector((state)=>state.user.user_info) 
-React.useEffect(()=>{ 
-    console.log(user);
- },[user])
+
     return(
         <>
+        {/* 토큰값 있을 시 보여지게 함 */}
         {isLogin ? (
         <Wrap>
             <div>

@@ -6,6 +6,9 @@ import styled from "styled-components";
 import user from "../images/init-user.png"
 import { createContentsDB } from "../redux/modules/post";
 import {isUpdate} from "../recoil";
+import { storage } from "../redux/configStore";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+
 
 const Wrap = styled.div`
     
@@ -81,28 +84,9 @@ const ContentsPost = (props) => {
     const [isImg, setIsImg] = useState("");
     const dispatch = useDispatch();
     const [isupdate, isSetUpdate] = useRecoilState(isUpdate)
-    const onSubmit = (e) => {
-        e.preventDefault();
-        console.log(textRef.current.value);
-        const textValue = textRef.current.value
-        if(textValue == ""){
-            alert("글을 작성하지 않았습니다.")
-        }else{
-            props.close(false);
-        console.log(isImg, textValue);
+    const [isFileUrl, setIsFileUrl] = useState("");
 
-        let data = {
-            content:textValue,
-            imageUrl:"gaga"
-        };
-        dispatch(createContentsDB(data));  
-        }
-        isSetUpdate((prev)=>!prev)
-         
-         navigate("/main")
-         alert("게시글 등록 완료.")
-    };
-
+    let fileUrl = "";
     const onImgChange = async (e) => {
         const reader = new FileReader();
         const file = conImg.current.files[0];
@@ -114,7 +98,44 @@ const ContentsPost = (props) => {
           console.log("이미지주소", reader.result);
         };
         setDefaultImg(true);
+        const uploadFile = await uploadBytes(
+            ref(storage, `images/${e.target.files[0].name}`),
+            e.target.files[0]
+          );
+      
+          fileUrl = await getDownloadURL(uploadFile.ref);
+          conImg.current = { url: fileUrl };
+          console.log(e.target.files[0], "this is ffile");
+      
+          //파일 url state에 저장
+          setIsFileUrl(fileUrl);
+        
     }
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+        console.log(textRef.current.value);
+        const textValue = textRef.current.value
+        if(textValue == ""){
+            alert("글을 작성하지 않았습니다.")
+        }else{
+            props.close(false);
+        console.log(isImg, textValue, "is img url");
+
+        let data = {
+            content:textValue,
+            imageURL:isImg,
+        };
+        console.log(data, "this is database")
+        dispatch(createContentsDB(data));  
+        }
+        isSetUpdate((prev)=>!prev)
+         
+         navigate("/main")
+         alert("게시글 등록 완료.")
+    };
+
+    
     const imgClick = () => {
         conImg.current.click();
     };
@@ -125,7 +146,7 @@ const ContentsPost = (props) => {
             <hr/>
             <UserBox>
                 <Img src={user}/>
-                <Span>내츄럴</Span>
+                <Span>{localStorage.getItem("user_name")}</Span>
             </UserBox>
             <ContentsForm onSubmit={onSubmit}>
                 <TextInput ref={textRef}/>

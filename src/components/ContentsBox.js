@@ -78,6 +78,7 @@ const StatusIcon = styled(FcLike)``
 
 const ContentsBox = () => {
     const [modalOpen, setModalOpen] = useState(false);
+    // 게시글 모달창
     const openModal = () => {
         setModalOpen(true);
     }

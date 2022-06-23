@@ -5,7 +5,7 @@ import { deleteContentsDB, loadContentsDB } from "../redux/modules/post";
 import user from "../images/init-user.png";
 import eight from "../images/8.png"
 import pan from "../images/판호.jpeg"
-import axios from "axios";
+import {FaTrashAlt} from "react-icons/fa"
 //댓글 컴포넌트 입니다.
 import Comment from "./Comment";
 
@@ -27,12 +27,16 @@ const MainBox = styled.div`
 
 const ContentsBox = styled.div`
     width: 490px;
-    border: 1px solid black;
+   
 `
 const UserBox = styled.div`
     display: flex;
     align-items: center;
     margin-left: 5px;
+`
+
+const H3 = styled.h3`
+    margin: 10px 0px 10px 10px;
 `
 
 const UserImg = styled.img`
@@ -69,26 +73,48 @@ const Img = styled.img`
     align-items: center;
 `
 
+const DeleteBox = styled.div`
+    margin-left: 250px;
+    
+`
+const DeleteBtn = styled.button`
+    border: none;
+`
+
+const DeleteIcon = styled(FaTrashAlt)`
+    border: none;
+`
+
+
 const ContentsListBox = () => {
     const observerRef = React.useRef();
     const boxRef = React.useRef(null);
+
+
     const list = useSelector((state) => state.post.data);
-    const [isMail, isSetMail] = useState("");
-    const [isDelete, isSetDelete] = useState(false)
-    const userMail = localStorage.getItem("user_mail"); 
-    console.log(userMail, "list mail")
+    
+    
+
+    // console.log(userMail, "list mail")
     const dispatch = useDispatch();
+    
+    // const listmail = list.map((i, idx)) 
+    // useEffect(() => {
+    //     isSetMail(userMail);
+    //     if(isMail == userMail){
+    //         isSetDelete(true)
+    //     }else{
+    //         isSetDelete(false)
+    //     }
+    // },[])
+
+    //로그인한 유저 메일정보 확인
+    const userMail = localStorage.getItem("user_mail"); 
+    
    
-    useEffect(() => {
-        isSetMail(userMail);
-        if(isMail == userMail){
-            isSetDelete(true)
-        }else{
-            isSetDelete(false)
-        }
-    },[])
-    console.log(isMail, "ismail mail")
-    console.log(isDelete, "ismail mail")
+    
+    // console.log(isMail, "ismail mail")
+    // console.log(isDelete, "ismail mail")
     // useEffect(() => {
     //     observerRef.current = new IntersectionObserver(intersectionObserver); // IntersectionObserver
     //     boxRef.current && observerRef.current.observe(boxRef.current);
@@ -151,22 +177,30 @@ const ContentsListBox = () => {
                 return(
                     <ContentsBox key={idx}>
                         <UserBox>
+                            
                             <UserImg src={user}/>
                             <UserInfoBox>
                             <Span>{item.familyName}{item.givenName}</Span>
                             <Span>{item.createdAt}</Span>
                             </UserInfoBox>
-                            {}
-                            <div>
+                            {/*  */}
+                            {list[idx].mail == userMail ? (
+                            <DeleteBox >
+                                <DeleteBtn onClick={()=>{onClick(list[idx].postId)}}><DeleteIcon/></DeleteBtn>
+                                <span></span>
+                            </DeleteBox>):("")}
+                            {/* <div>
                                 <button onClick={()=>{onClick(list[idx].postId)}}>hello</button>
                                 <span>2</span>
-                            </div>
+                            </div> */}
                         </UserBox>
+                        <H3>{item.content}</H3>
                        <ImgBox>
+                            
                             <Img src={pan}/>
                        </ImgBox>
-                       <h3>{item.content}</h3>
-                        <hr />
+                       
+                       
                         <Comment post_id={list[idx].postId}/>
                         {/* 상기 댓글 컴포넌트 입니다. */}
                     </ContentsBox >
