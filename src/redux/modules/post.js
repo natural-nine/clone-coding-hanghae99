@@ -22,8 +22,7 @@ export const createContentsDB = (data) => {
     .then((res)=>{
         console.log(data, "img")
         console.log(res, "response")
-        console.log(res.data, "test")
-        
+        console.log(res.data, "test") 
         dispatch(createContents(res.data))
     })
     .catch((error)=>{

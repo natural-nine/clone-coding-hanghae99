@@ -6,7 +6,11 @@ import styled from "styled-components";
 import user from "../images/init-user.png"
 import { createContentsDB } from "../redux/modules/post";
 import {isUpdate} from "../recoil";
+
 import { storage } from "../redux/configstore";
+
+
+
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 
 
@@ -86,6 +90,7 @@ const ContentsPost = (props) => {
     const [isupdate, isSetUpdate] = useRecoilState(isUpdate)
     const [isFileUrl, setIsFileUrl] = useState("");
 
+    
     let fileUrl = "";
     const onImgChange = async (e) => {
         const reader = new FileReader();
@@ -124,7 +129,7 @@ const ContentsPost = (props) => {
 
         let data = {
             content:textValue,
-            imageURL:isImg,
+            imageUrl:isImg,
         };
         console.log(data, "this is database")
         dispatch(createContentsDB(data));  
